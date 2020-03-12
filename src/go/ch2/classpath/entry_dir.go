@@ -5,12 +5,15 @@ import (
 	"path/filepath"
 )
 
+/*
+真实路径寻找
+*/
 type DirEntry struct {
 	//绝对路径
 	absDir string
 }
 
-func (self *DirEntry) readClass(className string) ([]byte, Entry, error) {
+func (self *DirEntry) ReadClass(className string) ([]byte, Entry, error) {
 	fileName := filepath.Join(self.absDir, className)
 	data, err := ioutil.ReadFile(fileName)
 	return data, self, err

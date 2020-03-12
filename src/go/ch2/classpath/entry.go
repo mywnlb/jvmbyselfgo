@@ -12,7 +12,7 @@ const pathListSeparator = string(os.PathListSeparator)
 */
 type Entry interface {
 	//读取class
-	readClass(className string) ([]byte, Entry, error)
+	ReadClass(className string) ([]byte, Entry, error)
 	String() string
 }
 

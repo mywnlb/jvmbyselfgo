@@ -2,20 +2,22 @@ package main
 
 import (
 	"fmt"
-	"jvmbyselfgo/jvmbyselfgo/src/go/ch2/classpath"
+	"jvmbyselfgo/src/go/ch2/classpath"
 	"strings"
 )
 
 func main() {
 	cmd := parseCmd()
-
-	if cmd.versionFlag {
-		fmt.Println("version 0.0.0.1")
-	} else if cmd.helpFlag || cmd.class == "" {
-		printUsage()
-	} else {
-		startJVM(cmd)
-	}
+	cmd.XjreOption = ""
+	cmd.cpOption = "java.lang.Object"
+	startJVM(cmd)
+	//if cmd.versionFlag {
+	//	fmt.Println("version 0.0.0.1")
+	//} else if cmd.helpFlag || cmd.class == "" {
+	//	printUsage()
+	//} else {
+	//	startJVM(cmd)
+	//}
 }
 
 func startJVM(cmd *Cmd) {

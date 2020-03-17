@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"jvmbyselfgo/jvmbyselfgo/src/go/ch2/classpath"
+	"jvmbyselfgo/jvmbyselfgo/src/go/ch3/classpath"
 	"strings"
 )
 

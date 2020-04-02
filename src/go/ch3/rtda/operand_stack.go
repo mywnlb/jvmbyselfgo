@@ -57,4 +57,5 @@ func (self *OperandStack) PushDouble(val float64) {
 func (self *OperandStack) PopDouble() float64 {
 	bits := uint64(self.PopLong())
 	return math.Float64frombits(bits)
+
 }

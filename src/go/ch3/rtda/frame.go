@@ -1,17 +1,17 @@
 package rtda
 
 type Frame struct {
-	lower *Frame
+	Lower *Frame
 	//局部变量表指针
-	localVars LocalVars
+	LocalVars LocalVars
 	//操作数栈指针
-	operandStack *OperandStack
+	OperandStack *OperandStack
 }
 
-func NewFrame(maxLocals,maxStack uint)*Frame  {
+func NewFrame(maxLocals, maxStack uint) *Frame {
 	return &Frame{
-		lower:        nil,
-		localVars:    newLocalVars(maxLocals),
-		operandStack: newOperandStack(maxStack),
+		Lower:        nil,
+		LocalVars:    newLocalVars(maxLocals),
+		OperandStack: newOperandStack(maxStack),
 	}
 }

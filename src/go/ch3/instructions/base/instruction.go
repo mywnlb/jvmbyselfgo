@@ -1,6 +1,6 @@
 package base
 
-import "jvmbyselfgo/jvmbyselfgo/src/go/ch3/rtda"
+import "jvmbyselfgo/src/go/ch3/rtda"
 
 type Instruction interface {
 	FetchOperands(reader *BytecodeReader)

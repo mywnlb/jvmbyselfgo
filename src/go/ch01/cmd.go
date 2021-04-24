@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 )
 
 type Cmd struct {
@@ -13,9 +14,10 @@ type Cmd struct {
 	args        []string
 }
 
-func parseCmd() *Cmd {
+func paseCmd() *Cmd {
 	cmd := &Cmd{}
 
+	flag.Usage = printUsage
 	flag.Usage = printUsage
 	flag.BoolVar(&cmd.helpFlag, "help", false, "print help message")
 	flag.BoolVar(&cmd.helpFlag, "?", false, "print help message")
@@ -29,9 +31,9 @@ func parseCmd() *Cmd {
 		cmd.class = args[0]
 		cmd.args = args[1:]
 	}
-
 	return cmd
 }
+
 func printUsage() {
-	fmt.Printf("Usage: #{os.Args[0]} [-options] class [args...]\n")
+	fmt.Printf("Usage: %s [-options] class [args...]\n", os.Args[0])
 }

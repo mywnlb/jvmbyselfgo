@@ -42,6 +42,23 @@ type ClassFile struct {
 	attributes        []*AttirbuteInfo
 }
 
+func Parse(classData []byte) (cf *ClassFile, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			var ok bool
+			err, ok = r.(error)
+			if !ok {
+				err = fmt.Errorf("%v", r)
+			}
+		}
+	}()
+
+	cr := &ClassReader{classData}
+	cf = &ClassFile{}
+	cf.read(cr)
+	return
+}
+
 func (self *ClassFile) read(reader *ClassReader) {
 	self.readAndCheckMagic(reader)
 	self.readAndCheckVersion(reader)
@@ -77,24 +94,6 @@ func (self *ClassFile) readAndCheckVersion(reader *ClassReader) {
 
 	panic("java.lang.UnsupportedClassVersionError!")
 }
-
-func Parse(classData []byte) (cf *ClassFile, err error) {
-	defer func() {
-		if r := recover(); r != nil {
-			var ok bool
-			err, ok = r.(error)
-			if !ok {
-				err = fmt.Errorf("%v", r)
-			}
-		}
-	}()
-
-	cr := &ClassReader{classData}
-	cf = &ClassFile{}
-	cf.read(cr)
-	return
-}
-
 func (self *ClassFile) MinorVersion() uint16 {
 	return self.minorVersion
 }
